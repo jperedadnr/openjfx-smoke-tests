@@ -10,6 +10,13 @@ jobs:
       matrix:
         os: [ macos-latest, windows-latest, ubuntu-latest ]
         type: [ modular, non-modular ]
+        include:
+          - os: ubuntu-latest
+            ARCH: "x64"
+          - os: windows-latest
+            ARCH: "x64"
+          - os: macos-latest
+            ARCH: "aarch64"
     steps:
       - uses: actions/checkout@v4
       - name: Setup java
@@ -17,6 +24,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 22
+          architecture: ${{ matrix.ARCH }}
       - name: Find staging url
         id: staging
         run: |
@@ -88,6 +96,13 @@ jobs:
       matrix:
         os: [ macos-latest, windows-latest, ubuntu-latest ]
         type: [ modular, non-modular ]
+        include:
+          - os: ubuntu-latest
+            ARCH: "x64"
+          - os: windows-latest
+            ARCH: "x64"
+          - os: macos-latest
+            ARCH: "aarch64"
     steps:
       - uses: actions/checkout@v4
       - name: Setup java
@@ -95,6 +110,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 22
+          architecture: ${{ matrix.ARCH }}
       - name: Find SDK version
         id: sdk
         run: |
@@ -168,6 +184,13 @@ jobs:
       fail-fast: false
       matrix:
         os: [ macos-latest, windows-latest, ubuntu-latest ]
+        include:
+          - os: ubuntu-latest
+            ARCH: "x64"
+          - os: windows-latest
+            ARCH: "x64"
+          - os: macos-latest
+            ARCH: "aarch64"
     steps:
       - uses: actions/checkout@v4
       - name: Setup java
@@ -175,6 +198,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: 22
+          architecture: ${{ matrix.ARCH }}
       - name: Find JMOD version
         id: jmod
         run: |
