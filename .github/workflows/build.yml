@@ -1,8 +1,6 @@
 name: Build
 
-on:
-  push:
-    branches: [ master ]
+on: [ push ]
 
 jobs:
   maven-central:
@@ -10,12 +8,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [ macos-13, macos-latest, windows-latest, ubuntu-latest ]
         type: [ modular, non-modular ]
         include:
           - os: ubuntu-latest
             ARCH: "x64"
           - os: windows-latest
+            ARCH: "x64"
+          - os: macos-13
             ARCH: "x64"
           - os: macos-latest
             ARCH: "aarch64"
@@ -96,12 +96,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [ macos-13, macos-latest, windows-latest, ubuntu-latest ]
         type: [ modular, non-modular ]
         include:
           - os: ubuntu-latest
             ARCH: "x64"
           - os: windows-latest
+            ARCH: "x64"
+          - os: macos-13
             ARCH: "x64"
           - os: macos-latest
             ARCH: "aarch64"
@@ -185,11 +187,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ macos-latest, windows-latest, ubuntu-latest ]
+        os: [ macos-13, macos-latest, windows-latest, ubuntu-latest ]
         include:
           - os: ubuntu-latest
             ARCH: "x64"
           - os: windows-latest
+            ARCH: "x64"
+          - os: macos-13
             ARCH: "x64"
           - os: macos-latest
             ARCH: "aarch64"
