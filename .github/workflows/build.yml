@@ -131,6 +131,7 @@ jobs:
           echo "sdk_versionpath=$VERSIONPATH" >> $GITHUB_OUTPUT
         shell: bash
       - name: Find SDK path
+        id: platform
         run: |
           OS=${{ matrix.os }}
           SDK=/tmp/javafx-sdk-${{ steps.sdk.outputs.sdk_versionpath }}
@@ -218,6 +219,7 @@ jobs:
           echo "jmod_versionpath=$VERSIONPATH" >> $GITHUB_OUTPUT
         shell: bash
       - name: Find JMOD home
+        id: platform
         run: |
           OS=${{ matrix.os }}
           JMOD_HOME=${{ runner.temp }}/javafx-jmods-${{ steps.jmod.outputs.jmod_versionpath }}
