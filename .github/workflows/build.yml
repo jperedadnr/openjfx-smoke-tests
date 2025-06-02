@@ -255,7 +255,7 @@ jobs:
           javac --module-path ${{ env.JMOD_HOME }} -d mods $(find src -name "*.java")
           cp -r src/main/resources/* mods
           ${{ env.JAVA_HOME }}/bin/jlink \
-          --module-path ${{ env.JMOD_HOME }}:mods \
+          --module-path ${{ env.JAVA_HOME }}/jmods:${{ env.JMOD_HOME }}:mods \
           --add-modules javafx.fxml,javafx.web,hellofx \
           --output ${{ env.RUNTIME }} \
           --strip-debug --compress 2 --no-header-files --no-man-pages
@@ -274,7 +274,7 @@ jobs:
           javac --module-path "${{ env.JMOD_HOME }}" -d mods $SOURCES
           Copy-Item -Force -Path "src\main\resources\*" -Destination "mods" -Recurse
           ${{ env.JAVA_HOME }}\bin\jlink `
-          --module-path "${{ env.JMOD_HOME }};mods" `
+          --module-path "${{ env.JAVA_HOME }}/jmods;${{ env.JMOD_HOME }};mods" `
           --add-modules javafx.fxml,javafx.web,hellofx `
           --output ${{ env.RUNTIME }} `
           --strip-debug --compress 2 --no-header-files --no-man-pages
@@ -292,7 +292,7 @@ jobs:
           javac --module-path ${{ env.JMOD_HOME }} -d mods $(find src -name "*.java")
           cp -r src/main/resources/* mods
           ${{ env.JAVA_HOME }}/bin/jlink \
-          --module-path ${{ env.JMOD_HOME }}:mods \
+          --module-path ${{ env.JAVA_HOME }}/jmods:${{ env.JMOD_HOME }}:mods \
           --add-modules javafx.fxml,javafx.web,hellofx \
           --output ${{ env.RUNTIME }} \
           --strip-debug --compress 2 --no-header-files --no-man-pages
